@@ -8,7 +8,7 @@ import (
 	"golang.org/x/net/proxy"
 )
 
-func getClient(t ProxyType, addr string) (*http.Client, error) {
+func getTransport(t ProxyType, addr string) (*http.Transport, error) {
 	transport := http.Transport{}
 	switch t {
 	case HTTP:
@@ -28,5 +28,5 @@ func getClient(t ProxyType, addr string) (*http.Client, error) {
 		break
 	}
 	transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
-	return &http.Client{Transport: &transport}, nil
+	return &transport, nil
 }

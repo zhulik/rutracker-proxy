@@ -37,7 +37,7 @@ func getNextProxyURL(t ProxyType) (string, error) {
 }
 
 // GetNextProxyClient returns ready http.Client with configured transport
-func GetNextProxyClient(t ProxyType) (*http.Client, error) {
+func GetNextProxyTransport(t ProxyType) (*http.Transport, error) {
 	c := 0
 	for c < 5 {
 		c++
@@ -47,12 +47,13 @@ func GetNextProxyClient(t ProxyType) (*http.Client, error) {
 			continue
 		}
 		log.Printf("Checking proxy %s...", addr)
-		c, err := checkProxy(t, addr)
+		t, err := checkProxy(t, addr)
 		if err != nil {
 			log.Printf("Proxy check failed: %s", err.Error())
 			continue
 		}
-		return c, nil
+		log.Printf("Using proxy %s", addr)
+		return t, nil
 	}
 	return nil, fmt.Errorf("Cannot find working proxy")
 }

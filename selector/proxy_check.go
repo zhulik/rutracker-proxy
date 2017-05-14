@@ -17,12 +17,13 @@ type checkResponse struct {
 	Proxy      string `json:"proxy"`
 }
 
-func checkProxy(t ProxyType, addr string) (*http.Client, error) {
-	client, err := getClient(t, addr)
+func checkProxy(t ProxyType, addr string) (*http.Transport, error) {
+	transport, err := getTransport(t, addr)
 	if err != nil {
 		return nil, err
 	}
 
+	client := http.Client{Transport: transport}
 	resp, err := client.Get(checkURL)
 	if err != nil {
 		return nil, err
@@ -35,7 +36,7 @@ func checkProxy(t ProxyType, addr string) (*http.Client, error) {
 	if err = compareResult(body, strings.Split(addr, ":")[0]); err != nil {
 		return nil, err
 	}
-	return client, nil
+	return transport, nil
 }
 
 func compareResult(body []byte, addr string) error {
