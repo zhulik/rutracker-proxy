@@ -14,7 +14,8 @@ For ArchLinux:
 `go install github.com/zhulik/rutracker-proxy`
 
 ## Building from sources
-Proxy is written in Go, so build steps is ordinary for Go software. Clone the repository and then in it's root directory run
+Proxy is written in Go, so build steps is ordinary for Go software. Clone the repository and
+then in it's root directory run
 
 `go get && go build`
 
@@ -30,6 +31,7 @@ Proxy is written in Go, so build steps is ordinary for Go software. Clone the re
 * Binary builds for lazy persons:-)
 * Unit tests
 * Testing in production
+* CI and automatic binary build for all platforms
 
 ## Contribution
 You know;-)
