@@ -32,6 +32,7 @@ then in it's root directory run
 * Unit tests
 * Testing in production
 * CI and automatic binary build for all platforms
+* URL filter like in original tool
 
 ## Contribution
 You know;-)

@@ -11,20 +11,16 @@ import (
 	"github.com/zhulik/rutracker-proxy/selector"
 )
 
-var (
-	port            = flag.Int("p", 8080, "Proxy port")
-	rotationTimeout = flag.Int("r", 5, "Proxy rotation timeout in minutes")
-	proxyType       = flag.String("t", "http", "Proxy type http|socks")
-)
-
 func main() {
+	port := flag.Int("p", 8080, "Proxy port")
+	rotationTimeout := flag.Int("r", 5, "Proxy rotation timeout in minutes, 0 - disabled")
+	proxyType := flag.String("t", "http", "Proxy type http|socks")
+
 	flag.Parse()
 	proxy := goproxy.NewProxyHttpServer()
 
 	p := selector.HTTP
 	switch *proxyType {
-	case "http":
-		break
 	case "socks":
 		p = selector.SOCKS
 	default:

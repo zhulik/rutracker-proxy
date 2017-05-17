@@ -19,6 +19,9 @@ func rotateTransport(t selector.ProxyType, proxy *goproxy.ProxyHttpServer, timeo
 
 		proxy.Tr = transport
 		log.Println("Rotation finished...")
+		if timeout == 0 {
+			break
+		}
 		time.Sleep(timeout)
 	}
 }
