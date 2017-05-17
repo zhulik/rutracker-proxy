@@ -12,9 +12,9 @@ import (
 )
 
 var (
-	port            = flag.Int("p", 8080, "Proxy port(8080)")
-	rotationTimeout = flag.Int("r", 5, "Proxy rotation timeout in minutes(5 minutes)")
-	proxyType       = flag.String("t", "http", "Proxy type http|socks (http)")
+	port            = flag.Int("p", 8080, "Proxy port")
+	rotationTimeout = flag.Int("r", 5, "Proxy rotation timeout in minutes")
+	proxyType       = flag.String("t", "http", "Proxy type http|socks")
 )
 
 func main() {
