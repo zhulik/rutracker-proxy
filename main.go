@@ -21,8 +21,11 @@ func main() {
 
 	p := selector.HTTP
 	switch *proxyType {
+	case "http":
+		break
 	case "socks":
 		p = selector.SOCKS
+		break
 	default:
 		log.Fatal("Unknown proxy type ", *proxyType)
 	}
