@@ -1,6 +1,6 @@
 # rutracker-proxy
 GUI-less tool for proxying torrent client announces to blocked in Russia rutracker announcers.
-Inspired by oringnal [tool](https://github.com/RutrackerOrg/rutracker-proxy). Automatic proxy
+Inspired by original [tool](https://github.com/RutrackerOrg/rutracker-proxy). Automatic proxy
 rotation every 5 minutes(configurable).
 
 ## Dependencies
