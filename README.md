@@ -3,6 +3,9 @@ GUI-less tool for proxying torrent client announces to blocked in Russia rutrack
 Inspired by original [tool](https://github.com/RutrackerOrg/rutracker-proxy). Automatic proxy
 rotation every 5 minutes(configurable).
 
+Fedora package lives [here](http://koji.russianfedora.pro/koji/packageinfo?packageID=140), and it's specs
+[here](https://github.com/RussianFedora/rutracker-proxy)(thanks to [@Vascom](https://github.com/vascom))
+
 ## Dependencies
 * Golang compiler
 
@@ -33,6 +36,8 @@ then in it's root directory run
 * Testing in production
 * CI and automatic binary build for all platforms
 * URL filter like in original tool
+* PKGBUILD
+* Transport wrapper for handling proxy errors
 
 ## Contribution
 You know;-)
