@@ -1,4 +1,6 @@
 # rutracker-proxy
+[![Build Status](https://travis-ci.org/zhulik/rutracker-proxy.svg?branch=master)](https://travis-ci.org/zhulik/rutracker-proxy)
+
 GUI-less tool for proxying torrent client announces to blocked in Russia rutracker announcers.
 Inspired by original [tool](https://github.com/RutrackerOrg/rutracker-proxy). Automatic proxy
 rotation every 5 minutes(configurable).
