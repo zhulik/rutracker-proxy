@@ -2,14 +2,12 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
-	"net/http"
-	"time"
 
-	"github.com/elazarl/goproxy"
 	"github.com/zhulik/rutracker-proxy/selector"
 )
+
+var proxyTypes = map[string]selector.ProxyType{"http": selector.HTTP, "socks": selector.SOCKS}
 
 func main() {
 	port := flag.Int("p", 8080, "Proxy port")
@@ -17,19 +15,11 @@ func main() {
 	proxyType := flag.String("t", "http", "Proxy type http|socks")
 
 	flag.Parse()
-	proxy := goproxy.NewProxyHttpServer()
 
-	p := selector.HTTP
-	switch *proxyType {
-	case "http":
-		break
-	case "socks":
-		p = selector.SOCKS
-		break
-	default:
+	if p, ok := proxyTypes[*proxyType]; ok {
+		log.Printf("Starting proxy with port=%d type=%s rotation timeout=%d", *port, *proxyType, *rotationTimeout)
+		log.Fatal(runProxy(p, *rotationTimeout, *port))
+	} else {
 		log.Fatal("Unknown proxy type ", *proxyType)
 	}
-
-	go rotateTransport(p, proxy, (time.Duration(*rotationTimeout))*time.Minute)
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", *port), proxy))
 }
