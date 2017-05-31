@@ -33,10 +33,9 @@ then in it's root directory run
 `rutracker-proxy --help`
 
 ## TODO
-* Binary builds for lazy persons:-)
 * Unit tests
 * Testing in production
-* CI and automatic binary build for all platforms
+* Automatic binary builds on releases for all platforms on Travis
 * PKGBUILD
 * Transport wrapper for handling proxy errors
 * SSL support

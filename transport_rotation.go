@@ -8,16 +8,16 @@ import (
 	"github.com/zhulik/rutracker-proxy/selector"
 )
 
-func updateTransport(t selector.ProxyType, proxy *goproxy.ProxyHttpServer) {
+func updateTransport(t selector.ProxyType, proxy *goproxy.ProxyHttpServer) error {
 	log.Println("Rotation started...")
 	transport, err := selector.GetNextProxyTransport(t)
 	if err != nil {
-		log.Printf("Transport rotation error: %s", err)
-		return
+		return err
 	}
 
 	proxy.Tr = transport
 	log.Println("Rotation finished...")
+	return nil
 }
 
 func rotateTransport(t selector.ProxyType, proxy *goproxy.ProxyHttpServer, timeout time.Duration) {
@@ -26,6 +26,9 @@ func rotateTransport(t selector.ProxyType, proxy *goproxy.ProxyHttpServer, timeo
 			break
 		}
 		time.Sleep(timeout)
-		updateTransport(t, proxy)
+		err := updateTransport(t, proxy)
+		if err != nil {
+			log.Printf("Transport rotation error: %s", err)
+		}
 	}
 }
