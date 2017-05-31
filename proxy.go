@@ -15,7 +15,7 @@ var rutrackerHostsRE = regexp.MustCompile(`^bt[2-5]?\.(rutracker\.org|t-ru\.org|
 
 func runProxy(p selector.ProxyType, rotationTimeout int, port int) error {
 	proxy := goproxy.NewProxyHttpServer()
-	go rotateTransport(p, proxy, (time.Duration(rotationTimeout))*time.Minute)
+	updateTransport(p, proxy)
 	proxy.OnRequest().DoFunc(func(req *http.Request, ctx *goproxy.ProxyCtx) (*http.Request, *http.Response) {
 		if rutrackerHostsRE.MatchString(req.URL.Hostname()) {
 			log.Printf("Querying to %s through proxy...", req.URL)
@@ -33,6 +33,6 @@ func runProxy(p selector.ProxyType, rotationTimeout int, port int) error {
 		}
 		return req, resp
 	})
-
+	go rotateTransport(p, proxy, (time.Duration(rotationTimeout))*time.Minute)
 	return http.ListenAndServe(fmt.Sprintf(":%d", port), proxy)
 }
