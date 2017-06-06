@@ -1,0 +1,32 @@
+# Maintainer: Gleb Sinyavsky <zhulik.gleb@gmail.com>
+
+pkgname=rutracker-proxy
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Tool for proxying client's announces to blocked rutracker servers"
+arch=('x86_64' 'i686')
+url="https://github.com/zhulik/rutracker-proxy"
+license=('MIT')
+makedepends=('go')
+options=('!strip' '!emptydirs')
+source=("https://github.com/zhulik/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('e7d1cbc66a063095f61822dacc6d86de62f86230d20dca4d10ff057a47fd7b7f')
+
+build() {
+  GOPATH="$srcdir"
+  _ROOT="$srcdir/src/github.com/zhulik/"
+  mkdir -p "$_ROOT"
+  mv "$pkgname-$pkgver" "$_ROOT/rutracker-proxy"
+  cd "$_ROOT/rutracker-proxy"
+  go get
+  go build
+}
+
+package() {
+  _ROOT="$srcdir/src/github.com/zhulik/"
+  cd "$_ROOT/rutracker-proxy"
+
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+}
+
+# vim:set ts=2 sw=2 et:
