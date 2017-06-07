@@ -8,8 +8,12 @@ rotation every 5 minutes(configurable).
 Fedora package lives [here](http://koji.russianfedora.pro/koji/packageinfo?packageID=140), and it's specs
 [here](https://github.com/RussianFedora/rutracker-proxy)(thanks to [@Vascom](https://github.com/vascom))
 
+## Notes
+* Transmission doesn't support proxies since 2.12 release. Deluge and QBittorrent does.
+* For ArchLinux users: PKGBUILD can be found in archlinux directory. Config and service file are also there, they are the same as for Fedora(thanks to [@Vascom](https://github.com/vascom)). Package will be published on AUR after testing on my machine.
+
 ## Dependencies
-* Golang compiler
+* Golang compiler >= 1.6
 
 For ArchLinux:
 
@@ -36,7 +40,6 @@ then in it's root directory run
 * Unit tests
 * Testing in production
 * Automatic binary builds on releases for all platforms on Travis
-* PKGBUILD
 * Transport wrapper for handling proxy errors
 * SSL support
 
