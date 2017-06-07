@@ -22,4 +22,4 @@ func stripPost(u *url.URL) string {
 		return strings.TrimPrefix(hostport[:i], "[")
 	}
 	return hostport[:colon]
-
+}
