@@ -13,7 +13,8 @@ import (
 var rutrackerHostsRE = regexp.MustCompile(`^bt[2-5]?\.(rutracker\.org|t-ru\.org|rutracker\.cc)$`)
 
 func proxyHandler(req *http.Request, ctx *goproxy.ProxyCtx) (*http.Request, *http.Response) {
-	if rutrackerHostsRE.MatchString(req.URL.Hostname()) {
+	hostname := getHostname(req.URL)
+	if rutrackerHostsRE.MatchString(hostname) {
 		log.Printf("Querying to %s through proxy...", req.URL)
 		resp, err := ctx.RoundTrip(req)
 		if err != nil {
