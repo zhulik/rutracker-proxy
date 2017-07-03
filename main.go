@@ -21,7 +21,7 @@ func main() {
 	if p, ok := proxyTypes[*proxyType]; ok {
 		log.Printf("Starting proxy with port=%d type=%s rotation timeout=%d", *port, *proxyType, *rotationTimeout)
 		proxy := newProxy(p, *rotationTimeout, *port)
-		log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), proxy))
+		log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", *port), proxy))
 
 	} else {
 		log.Fatal("Unknown proxy type ", *proxyType)
