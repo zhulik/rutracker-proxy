@@ -27,6 +27,19 @@ For ArchLinux:
 ### Archlinux way
 `y -S rutracker-proxy`
 
+### Fedora way
+0. Install free repo if it is not installed yet
+
+`# sudo dnf install --nogpgcheck http://mirror.yandex.ru/fedora/russianfedora/russianfedora/free/fedora/russianfedora-free-release-stable.noarch.rpm`
+
+1. Install rutracker-proxy
+
+`# sudo dnf install rutracker-proxy`
+
+Alternatively you can download and install package manually from http://koji.russianfedora.pro/koji/packageinfo?packageID=140
+
+2. Run rutracker-proxy by hand or via systemd unit with setting parameters in config file /etc/rutracker-proxy/rutracker-proxy.conf.
+
 ### Docker way
 
 `docker pull zhulik/rutracker-proxy`
