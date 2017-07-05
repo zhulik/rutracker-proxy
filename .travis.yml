@@ -7,10 +7,14 @@ go:
   - 1.7
   - 1.8
 
+services:
+  - docker
+
 script: go test -cover ./...
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker build -t zhulik/rutracker-proxy .
     docker push zhulik/rutracker-proxy;
     fi
