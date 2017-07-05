@@ -27,6 +27,12 @@ For ArchLinux:
 ### Archlinux way
 `y -S rutracker-proxy`
 
+### Docker way
+
+`docker pull zhulik/rutracker-proxy`
+
+`docker run -d --rm zhulik/rutracker-proxy`
+
 ## Building from sources
 Proxy is written in Go, so build steps are ordinary for Go software. Clone the repository and
 then in it's root directory run
