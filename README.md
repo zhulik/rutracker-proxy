@@ -17,7 +17,7 @@ Fedora package lives [here](http://koji.russianfedora.pro/koji/packageinfo?packa
 
 For ArchLinux:
 
-`pacman -S go`
+`sudo pacman -S go`
 
 ## Installing
 
@@ -25,26 +25,22 @@ For ArchLinux:
 `go install github.com/zhulik/rutracker-proxy`
 
 ### Archlinux way
-`y -S rutracker-proxy`
+`sudo yaourt -S rutracker-proxy`
 
 ### Fedora way
-0. Install free repo if it is not installed yet
+Install free repo if it is not installed yet
 
-`# sudo dnf install --nogpgcheck http://mirror.yandex.ru/fedora/russianfedora/russianfedora/free/fedora/russianfedora-free-release-stable.noarch.rpm`
+`sudo dnf install --nogpgcheck http://mirror.yandex.ru/fedora/russianfedora/russianfedora/free/fedora/russianfedora-free-release-stable.noarch.rpm`
 
-1. Install rutracker-proxy
+Install rutracker-proxy
 
-`# sudo dnf install rutracker-proxy`
+`sudo dnf install rutracker-proxy`
 
-Alternatively you can download and install package manually from http://koji.russianfedora.pro/koji/packageinfo?packageID=140
-
-2. Run rutracker-proxy by hand or via systemd unit with setting parameters in config file /etc/rutracker-proxy/rutracker-proxy.conf.
+Alternatively you can download and install package manually from [here](http://koji.russianfedora.pro/koji/packageinfo?packageID=140)
 
 ### Docker way
 
 `docker pull zhulik/rutracker-proxy`
-
-`docker run -d --rm zhulik/rutracker-proxy`
 
 ## Building from sources
 Proxy is written in Go, so build steps are ordinary for Go software. Clone the repository and
@@ -54,7 +50,25 @@ then in it's root directory run
 
 ## Running
 
+### Manual way
 `rutracker-proxy`
+
+### Systemd way(ArchLinux and Fedora)
+
+Edit the configuration file `/etc/rutracker-proxy/rutracker-proxy.conf`
+
+Start daemon
+
+`systemctl start rutracker-proxy`
+
+Add daemon to autostart
+
+`systemctl enable rutracker-proxy`
+
+### Docker way
+
+`docker run -d --restart=always zhulik/rutracker-proxy`
+
 
 ## Options
 
