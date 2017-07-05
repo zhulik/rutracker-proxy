@@ -24,7 +24,7 @@ For ArchLinux:
 ### Go way
 `go install github.com/zhulik/rutracker-proxy`
 
-### Archlinux way
+### ArchLinux way
 `sudo yaourt -S rutracker-proxy`
 
 ### Fedora way
