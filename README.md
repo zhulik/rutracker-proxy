@@ -67,7 +67,7 @@ Add daemon to autostart
 
 ### Docker way
 
-`docker run -d --restart=always zhulik/rutracker-proxy`
+`docker run -d --restart=always -p 8080:8080 zhulik/rutracker-proxy`
 
 
 ## Options
