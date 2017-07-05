@@ -20,7 +20,12 @@ For ArchLinux:
 `pacman -S go`
 
 ## Installing
+
+### Go way
 `go install github.com/zhulik/rutracker-proxy`
+
+### Archlinux way
+`y -S rutracker-proxy`
 
 ## Building from sources
 Proxy is written in Go, so build steps are ordinary for Go software. Clone the repository and
@@ -38,7 +43,6 @@ then in it's root directory run
 
 ## TODO
 * Unit tests
-* Testing in production
 * Automatic binary builds on releases for all platforms on Travis
 * Transport wrapper for handling proxy errors
 * SSL support
