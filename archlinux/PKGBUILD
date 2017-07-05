@@ -1,7 +1,7 @@
 # Maintainer: Gleb Sinyavsky <zhulik.gleb@gmail.com>
 
 pkgname=rutracker-proxy
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Tool for proxying client's announces to blocked rutracker servers"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ options=('!strip' '!emptydirs')
 source=("https://github.com/zhulik/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname.conf"
         "$pkgname.service")
-sha256sums=('e7d1cbc66a063095f61822dacc6d86de62f86230d20dca4d10ff057a47fd7b7f'
+sha256sums=('c06702971f45bcfee32987b40df1c73004e02a57c052e9fb3c18b28f231ac9c5'
             'e79f961e069637ea548a3b7729eb3a51891a28bdf20815a418674d16954eaaad'
             '903e72b3adda53c4d4833996a37a56d34d447a3f51982d13c4d2891d78f39e09')
 
