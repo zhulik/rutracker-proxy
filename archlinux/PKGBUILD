@@ -17,7 +17,7 @@ sha256sums=('c06702971f45bcfee32987b40df1c73004e02a57c052e9fb3c18b28f231ac9c5'
             '903e72b3adda53c4d4833996a37a56d34d447a3f51982d13c4d2891d78f39e09')
 
 build() {
-  GOPATH="$srcdir"
+  export GOPATH="$srcdir"
   _ROOT="$srcdir/src/github.com/zhulik/"
   mkdir -p "$_ROOT"
   mv "$pkgname-$pkgver" "$_ROOT/$pkgname"
