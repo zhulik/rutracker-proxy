@@ -10,7 +10,7 @@ import (
 func TestUpdateTransport(t *testing.T) {
 	proxy := goproxy.NewProxyHttpServer()
 	tr := proxy.Tr
-	updateTransport(selector.HTTP, proxy)
+	updateTransport(selector.HTTP, proxy, 5)
 	if proxy.Tr == tr {
 		t.Fail()
 	}

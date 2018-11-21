@@ -7,7 +7,7 @@ import (
 )
 
 func TestNewProxy(t *testing.T) {
-	res := newProxy(selector.HTTP, 5, 8080)
+	res := newProxy(selector.HTTP, 5, 8080, 5)
 	if res == nil {
 		t.Fail()
 	}

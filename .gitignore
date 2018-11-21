@@ -2,3 +2,4 @@ rutracker-proxy
 archlinux/src/
 archlinux/pkg/
 *.pkg.tar.xz
+.idea
