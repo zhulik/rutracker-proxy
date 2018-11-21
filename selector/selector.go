@@ -37,9 +37,9 @@ func getNextProxyURL(t ProxyType) (string, error) {
 }
 
 // GetNextProxyClient returns ready http.Client with configured transport
-func GetNextProxyTransport(t ProxyType) (*http.Transport, error) {
+func GetNextProxyTransport(t ProxyType, maxTries int) (*http.Transport, error) {
 	c := 0
-	for c < 5 {
+	for c < maxTries {
 		c++
 		addr, err := getNextProxyURL(t)
 		if err != nil {

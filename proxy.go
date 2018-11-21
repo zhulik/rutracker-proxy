@@ -31,10 +31,10 @@ func proxyHandler(req *http.Request, ctx *goproxy.ProxyCtx) (*http.Request, *htt
 	return req, resp
 }
 
-func newProxy(p selector.ProxyType, rotationTimeout int, port int) *goproxy.ProxyHttpServer {
+func newProxy(p selector.ProxyType, rotationTimeout int, port int, maxTries int) *goproxy.ProxyHttpServer {
 	proxy := goproxy.NewProxyHttpServer()
-	updateTransport(p, proxy)
+	updateTransport(p, proxy, maxTries)
 	proxy.OnRequest().DoFunc(proxyHandler)
-	go rotateTransport(p, proxy, (time.Duration(rotationTimeout))*time.Minute)
+	go rotateTransport(p, proxy, (time.Duration(rotationTimeout))*time.Minute, maxTries)
 	return proxy
 }
