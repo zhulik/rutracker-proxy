@@ -22,7 +22,7 @@ For ArchLinux:
 ## Installing
 
 ### Go way
-`go install github.com/zhulik/rutracker-proxy`
+`go get github.com/zhulik/rutracker-proxy`
 
 ### ArchLinux way
 `sudo yaourt -S rutracker-proxy`
